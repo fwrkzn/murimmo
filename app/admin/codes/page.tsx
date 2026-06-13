@@ -1,5 +1,6 @@
 import { AccessCodeGenerator } from "@/components/access-code-generator";
 import { AccessLinkCopyButton } from "@/components/access-link-copy-button";
+import { logAdminError } from "@/lib/admin-errors";
 import { createSupabaseAdminClient } from "@/lib/supabase-admin";
 
 export const dynamic = "force-dynamic";
@@ -19,6 +20,7 @@ export default async function AdminCodesPage() {
     .order("created_at", { ascending: false });
 
   if (error) {
+    logAdminError("codes list query", error);
     throw new Error("Impossible de charger les codes d'accès.");
   }
 

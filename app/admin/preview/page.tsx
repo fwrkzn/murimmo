@@ -1,5 +1,6 @@
 import { ListingCard } from "@/components/ListingCard";
 import { PhotoGallery } from "@/components/PhotoGallery";
+import { logAdminError } from "@/lib/admin-errors";
 import { mapListingRow } from "@/lib/listings";
 import { createSupabaseAdminClient } from "@/lib/supabase-admin";
 
@@ -22,6 +23,7 @@ export default async function AdminPreviewPage() {
     .order("created_at", { ascending: false });
 
   if (error) {
+    logAdminError("preview listings query", error);
     throw new Error("Impossible de charger l'aperçu visiteur.");
   }
 

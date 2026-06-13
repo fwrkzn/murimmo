@@ -1,4 +1,5 @@
 import { createSupabaseAdminClient } from "@/lib/supabase-admin";
+import { logAdminError } from "@/lib/admin-errors";
 
 export const dynamic = "force-dynamic";
 
@@ -21,6 +22,9 @@ export default async function AdminDashboardPage() {
   ]);
 
   if (publishedError || activeError || expiredError) {
+    logAdminError("dashboard published listings query", publishedError);
+    logAdminError("dashboard active codes query", activeError);
+    logAdminError("dashboard expired codes query", expiredError);
     throw new Error("Impossible de charger les statistiques du tableau de bord.");
   }
 

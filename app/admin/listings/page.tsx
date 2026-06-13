@@ -1,6 +1,7 @@
 import type { Route } from "next";
 import Link from "next/link";
 import { deleteListing } from "@/app/admin/listings/actions";
+import { logAdminError } from "@/lib/admin-errors";
 import { createSupabaseAdminClient } from "@/lib/supabase-admin";
 
 export const dynamic = "force-dynamic";
@@ -21,6 +22,7 @@ export default async function AdminListingsPage() {
     .order("created_at", { ascending: false });
 
   if (error) {
+    logAdminError("listings list query", error);
     throw new Error("Impossible de charger les annonces.");
   }
 

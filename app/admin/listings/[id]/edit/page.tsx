@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { deleteListing, updateListing } from "@/app/admin/listings/actions";
 import { ListingForm } from "@/components/listing-form";
+import { logAdminError } from "@/lib/admin-errors";
 import { createSupabaseAdminClient } from "@/lib/supabase-admin";
 import type { Listing } from "@/types/listing";
 
@@ -50,6 +51,7 @@ export default async function AdminEditListingPage({ params }: EditListingPagePr
     .maybeSingle();
 
   if (error) {
+    logAdminError("edit listing query", error);
     throw new Error("Impossible de charger l'annonce.");
   }
 

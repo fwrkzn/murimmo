@@ -3,10 +3,12 @@ export function getSupabaseEnv() {
   const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
   if (!url) {
+    console.error("[env] Missing NEXT_PUBLIC_SUPABASE_URL");
     throw new Error("Missing environment variable: NEXT_PUBLIC_SUPABASE_URL");
   }
 
   if (!anonKey) {
+    console.error("[env] Missing NEXT_PUBLIC_SUPABASE_ANON_KEY");
     throw new Error("Missing environment variable: NEXT_PUBLIC_SUPABASE_ANON_KEY");
   }
 
@@ -20,6 +22,7 @@ export function getSupabaseServiceRoleKey() {
   const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
   if (!serviceRoleKey) {
+    console.error("[env] Missing SUPABASE_SERVICE_ROLE_KEY");
     throw new Error("Missing environment variable: SUPABASE_SERVICE_ROLE_KEY");
   }
 
