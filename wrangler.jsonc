@@ -1,0 +1,21 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "muratimmoapp",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-06-06",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "kv_namespaces": [
+    // Create a KV namespace and bind it as NEXT_INC_CACHE_KV for ISR/fetch cache support.
+    // {
+    //   "binding": "NEXT_INC_CACHE_KV",
+    //   "id": "<YOUR_KV_NAMESPACE_ID>"
+    // }
+  ],
+  "observability": {
+    "enabled": true
+  }
+}
