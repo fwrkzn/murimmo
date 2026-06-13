@@ -18,8 +18,8 @@ export function createSupabaseServerClient() {
           cookiesToSet.forEach(({ name, value, options }) => {
             cookieStore.set(name, value, options);
           });
-        } catch {
-          // Server Components cannot always mutate cookies during render.
+        } catch (error) {
+          console.error("[supabase-server] setAll failed", error);
         }
       }
     }

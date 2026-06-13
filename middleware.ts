@@ -12,24 +12,39 @@ export async function middleware(request: NextRequest) {
   const isPropertiesRoute = pathname.startsWith("/properties");
 
   if (isAdminRoute) {
-    const { supabase, response } = createSupabaseMiddlewareClient(request);
-    const {
-      data: { user }
-    } = await supabase.auth.getUser();
+    try {
+      const { supabase, response } = createSupabaseMiddlewareClient(request);
+      const {
+        data: { user },
+        error
+      } = await supabase.auth.getUser();
 
-    if (!user && !isLoginRoute && !isResetPasswordRoute) {
-      const loginUrl = new URL("/admin/login", request.url);
+      if (error) {
+        console.error("[middleware] admin getUser failed", {
+          pathname,
+          message: error.message,
+          status: error.status ?? null,
+          name: error.name ?? null
+        });
+      }
 
-      return NextResponse.redirect(loginUrl);
+      if (!user && !isLoginRoute && !isResetPasswordRoute) {
+        const loginUrl = new URL("/admin/login", request.url);
+
+        return NextResponse.redirect(loginUrl);
+      }
+
+      if (user && isLoginRoute) {
+        const dashboardUrl = new URL("/admin/dashboard", request.url);
+
+        return NextResponse.redirect(dashboardUrl);
+      }
+
+      return response;
+    } catch (error) {
+      console.error("[middleware] admin middleware crashed", { pathname, error });
+      return NextResponse.redirect(new URL("/admin/login", request.url));
     }
-
-    if (user && isLoginRoute) {
-      const dashboardUrl = new URL("/admin/dashboard", request.url);
-
-      return NextResponse.redirect(dashboardUrl);
-    }
-
-    return response;
   }
 
   if (isPropertiesRoute) {
