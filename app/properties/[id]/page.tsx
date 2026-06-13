@@ -50,7 +50,7 @@ export default async function PropertyDetailPage({ params }: PropertyDetailPageP
   const relatedListings = relatedRows.map(mapListingRow);
 
   return (
-    <div className="mx-auto max-w-6xl px-5 py-8 md:px-6 md:py-10">
+    <div className="mx-auto max-w-6xl px-4 py-6 sm:px-5 md:px-6 md:py-10">
       <section className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_19rem] lg:items-start">
         <div className="space-y-5">
           <div className="flex flex-col gap-4 animate-fade-up">
@@ -63,7 +63,7 @@ export default async function PropertyDetailPage({ params }: PropertyDetailPageP
 
             <div className="space-y-2">
               <p className="text-[11px] uppercase tracking-[0.2em] text-[var(--color-muted)]">{listing.city}</p>
-              <h1 className="max-w-3xl font-display text-[2.4rem] leading-[0.98] text-[var(--color-text)] md:text-[3.4rem]">
+              <h1 className="max-w-3xl font-display text-[2rem] leading-[0.98] text-[var(--color-text)] sm:text-[2.5rem] md:text-[3.4rem]">
                 {listing.title}
               </h1>
             </div>
@@ -124,7 +124,7 @@ export default async function PropertyDetailPage({ params }: PropertyDetailPageP
             </p>
           </div>
 
-          <div className="grid gap-5 md:grid-cols-2">
+          <div className="grid gap-5 sm:grid-cols-2">
             {relatedListings.map((relatedListing) => (
               <ListingCard key={relatedListing.id} listing={relatedListing} />
             ))}

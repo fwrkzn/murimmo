@@ -36,12 +36,12 @@ export default async function PropertiesPage({ searchParams }: PropertiesPagePro
   const listings = data.map(mapListingRow);
 
   return (
-    <section className="mx-auto max-w-6xl px-5 py-8 md:px-6 md:py-10">
+    <section className="mx-auto max-w-6xl px-4 py-6 sm:px-5 md:px-6 md:py-10">
       <div className="grid gap-8 lg:grid-cols-[1fr_16rem]">
         <div className="space-y-6">
           <div className="space-y-3 animate-fade-up">
             <p className="text-[11px] uppercase tracking-[0.22em] text-[var(--color-muted)]">Catalogue privé</p>
-            <h1 className="max-w-3xl font-display text-[2.4rem] leading-[1] text-[var(--color-text)] md:text-[3.3rem]">
+            <h1 className="max-w-3xl font-display text-[2rem] leading-[0.98] text-[var(--color-text)] sm:text-[2.4rem] md:text-[3.3rem]">
               Une sélection confidentielle de biens
             </h1>
             <p className="max-w-2xl text-sm leading-7 text-[var(--color-muted)]">
@@ -58,7 +58,7 @@ export default async function PropertiesPage({ searchParams }: PropertiesPagePro
               </p>
             </div>
           ) : (
-            <div className="grid gap-5 md:grid-cols-2">
+            <div className="grid gap-5 sm:grid-cols-2">
               {listings.map((listing, index) => (
                 <div
                   key={listing.id}
@@ -72,7 +72,7 @@ export default async function PropertiesPage({ searchParams }: PropertiesPagePro
           )}
         </div>
 
-        <aside className="animate-fade-up space-y-4 lg:sticky lg:top-20 lg:self-start">
+        <aside className="order-first animate-fade-up space-y-4 lg:order-none lg:sticky lg:top-20 lg:self-start">
           <div className="rounded-[22px] border border-black/5 bg-[var(--color-panel)] p-4 shadow-[0_10px_30px_rgba(26,26,26,0.035)]">
             <p className="text-[11px] uppercase tracking-[0.2em] text-[var(--color-muted)]">Tri</p>
             <div className="mt-3 space-y-2">

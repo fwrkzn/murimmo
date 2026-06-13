@@ -87,7 +87,7 @@ export function AdminResetPasswordForm() {
   }
 
   return (
-    <section className="w-full max-w-md rounded-2xl border border-slate-200 bg-white p-8 shadow-[0_24px_80px_rgba(15,23,42,0.06)]">
+    <section className="w-full max-w-md rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_24px_80px_rgba(15,23,42,0.06)] sm:p-8">
       <div className="space-y-2">
         <p className="text-sm uppercase tracking-[0.24em] text-slate-400">Admin panel</p>
         <h1 className="text-3xl font-semibold tracking-tight text-slate-950">Nouveau mot de passe</h1>

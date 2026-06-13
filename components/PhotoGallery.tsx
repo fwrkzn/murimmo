@@ -39,18 +39,18 @@ export function PhotoGallery({ photos, title }: { photos: string[]; title: strin
           </div>
 
           {photos.length > 1 ? (
-            <div className="pointer-events-none absolute inset-x-0 top-1/2 flex -translate-y-1/2 items-center justify-between px-3">
+            <div className="pointer-events-none absolute inset-x-0 top-1/2 flex -translate-y-1/2 items-center justify-between px-2 sm:px-3">
               <button
                 type="button"
                 onClick={goToPrevious}
-                className="pointer-events-auto rounded-full border border-white/40 bg-white/88 px-3 py-1.5 text-xs text-[var(--color-text)] backdrop-blur transition hover:bg-white"
+                className="pointer-events-auto rounded-full border border-white/40 bg-white/88 px-2.5 py-1.5 text-[11px] text-[var(--color-text)] backdrop-blur transition hover:bg-white sm:px-3 sm:text-xs"
               >
                 Précédente
               </button>
               <button
                 type="button"
                 onClick={goToNext}
-                className="pointer-events-auto rounded-full border border-white/40 bg-white/88 px-3 py-1.5 text-xs text-[var(--color-text)] backdrop-blur transition hover:bg-white"
+                className="pointer-events-auto rounded-full border border-white/40 bg-white/88 px-2.5 py-1.5 text-[11px] text-[var(--color-text)] backdrop-blur transition hover:bg-white sm:px-3 sm:text-xs"
               >
                 Suivante
               </button>
@@ -60,7 +60,7 @@ export function PhotoGallery({ photos, title }: { photos: string[]; title: strin
       </div>
 
       {photos.length > 1 ? (
-        <div className="grid grid-cols-4 gap-2.5 md:grid-cols-6">
+        <div className="grid grid-cols-3 gap-2.5 sm:grid-cols-4 md:grid-cols-6">
           {photos.map((photo, index) => {
             const isActive = index === activeIndex;
 

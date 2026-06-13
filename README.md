@@ -67,13 +67,16 @@ Au 6 juin 2026, Cloudflare oriente les applications Next.js full-stack vers son 
 ### Option recommandee
 
 1. Pousser le projet sur GitHub.
-2. Connecter le repo a Cloudflare.
+2. Importer le repo dans Cloudflare Workers.
 3. Creer un namespace KV Cloudflare si tu veux activer le cache incremental OpenNext, puis renseigner son `id` dans `wrangler.jsonc` sur le binding `NEXT_INC_CACHE_KV`.
 4. Configurer les variables d'environnement dans Cloudflare :
    - `NEXT_PUBLIC_SUPABASE_URL`
    - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
    - `SUPABASE_SERVICE_ROLE_KEY`
-5. Utiliser la commande de build/deploiement :
+5. Dans **Workers > Settings > Builds**, definir :
+   - Build command: `npm run cf:build`
+   - Deploy command: `npm run cf:deploy`
+6. Utiliser la commande de build/deploiement :
 
 ```bash
 npm run deploy

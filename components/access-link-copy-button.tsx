@@ -25,7 +25,7 @@ export function AccessLinkCopyButton({ code }: { code: string }) {
   }
 
   return (
-    <div className="flex items-center justify-end gap-3">
+    <div className="flex flex-wrap items-center gap-3 md:justify-end">
       {feedback === "copied" ? <span className="text-xs text-emerald-600">Lien copie</span> : null}
       {feedback === "error" ? <span className="text-xs text-red-600">Copie impossible</span> : null}
 
@@ -33,7 +33,7 @@ export function AccessLinkCopyButton({ code }: { code: string }) {
         type="button"
         onClick={handleCopy}
         disabled={isPending}
-        className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:text-slate-950 disabled:cursor-not-allowed disabled:text-slate-400"
+        className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:text-slate-950 disabled:cursor-not-allowed disabled:text-slate-400 sm:w-auto"
       >
         Copier le lien
       </button>

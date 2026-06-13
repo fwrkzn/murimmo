@@ -32,7 +32,7 @@ export default async function AdminCodesPage() {
       <AccessCodeGenerator />
 
       <div className="overflow-hidden rounded-2xl border border-black/5 bg-white shadow-sm">
-        <div className="grid grid-cols-[1.1fr_1.3fr_1fr_1fr_0.8fr_0.9fr] gap-4 border-b border-slate-100 px-6 py-4 text-xs uppercase tracking-[0.22em] text-slate-400">
+        <div className="hidden grid-cols-[1.1fr_1.3fr_1fr_1fr_0.8fr_0.9fr] gap-4 border-b border-slate-100 px-6 py-4 text-xs uppercase tracking-[0.22em] text-slate-400 md:grid">
           <span>Code</span>
           <span>Label</span>
           <span>Créé le</span>
@@ -51,7 +51,7 @@ export default async function AdminCodesPage() {
               return (
                 <div
                   key={accessCode.id}
-                  className={`grid grid-cols-1 gap-4 px-6 py-5 md:grid-cols-[1.1fr_1.3fr_1fr_1fr_0.8fr_0.9fr] md:items-center ${
+                  className={`grid grid-cols-1 gap-4 px-4 py-5 sm:px-6 md:grid-cols-[1.1fr_1.3fr_1fr_1fr_0.8fr_0.9fr] md:items-center ${
                     isExpired ? "text-slate-400" : "text-slate-700"
                   }`}
                 >

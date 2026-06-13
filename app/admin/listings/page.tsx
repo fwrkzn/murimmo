@@ -39,7 +39,7 @@ export default async function AdminListingsPage() {
       </div>
 
       <div className="overflow-hidden rounded-2xl border border-black/5 bg-white shadow-sm">
-        <div className="grid grid-cols-[1.4fr_1fr_1fr_0.8fr_1.25fr] gap-4 border-b border-slate-100 px-6 py-4 text-xs uppercase tracking-[0.22em] text-slate-400">
+        <div className="hidden grid-cols-[1.4fr_1fr_1fr_0.8fr_1.25fr] gap-4 border-b border-slate-100 px-6 py-4 text-xs uppercase tracking-[0.22em] text-slate-400 md:grid">
           <span>Titre</span>
           <span>Ville</span>
           <span>Prix</span>
@@ -85,7 +85,7 @@ export default async function AdminListingsPage() {
                     </span>
                   </div>
 
-                  <div className="flex items-center justify-end gap-3">
+                  <div className="flex flex-wrap items-center gap-3 md:justify-end">
                     {listing.published ? (
                       <a
                         href={`/properties/${listing.id}`}

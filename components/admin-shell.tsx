@@ -30,15 +30,15 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="min-h-screen bg-[#F9F9F8] text-slate-950">
-      <div className="mx-auto flex min-h-screen max-w-7xl">
-        <aside className="flex w-72 flex-col justify-between border-r border-black/5 px-6 py-8">
+      <div className="mx-auto flex min-h-screen max-w-7xl flex-col lg:flex-row">
+        <aside className="border-b border-black/5 px-4 py-5 lg:flex lg:w-72 lg:flex-col lg:justify-between lg:border-b-0 lg:border-r lg:px-6 lg:py-8">
           <div>
-            <div className="mb-10">
+            <div className="mb-5 lg:mb-10">
               <p className="text-xs uppercase tracking-[0.28em] text-slate-400">Murat Immo</p>
               <h1 className="mt-3 text-2xl font-semibold tracking-tight">Administration</h1>
             </div>
 
-            <nav className="space-y-2">
+            <nav className="-mx-1 flex gap-2 overflow-x-auto pb-1 lg:mx-0 lg:block lg:space-y-2 lg:overflow-visible lg:pb-0">
               {navigation.map((item) => {
                 const isActive = pathname === item.href;
 
@@ -46,7 +46,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`block rounded-xl px-4 py-3 text-sm transition ${
+                    className={`block shrink-0 rounded-xl px-4 py-3 text-sm transition lg:shrink ${
                       isActive
                         ? "bg-white font-medium text-slate-950 shadow-sm"
                         : "text-slate-600 hover:bg-white/70 hover:text-slate-950"
@@ -59,16 +59,18 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
             </nav>
           </div>
 
-          <button
-            type="button"
-            onClick={handleSignOut}
-            className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-left text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:text-slate-950"
-          >
-            Déconnexion
-          </button>
+          <div className="mt-5 lg:mt-8">
+            <button
+              type="button"
+              onClick={handleSignOut}
+              className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-left text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:text-slate-950"
+            >
+              Déconnexion
+            </button>
+          </div>
         </aside>
 
-        <main className="flex-1 px-6 py-8 md:px-10">{children}</main>
+        <main className="flex-1 px-4 py-6 md:px-6 lg:px-10 lg:py-8">{children}</main>
       </div>
     </div>
   );

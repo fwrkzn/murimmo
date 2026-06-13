@@ -39,7 +39,7 @@ export function ListingCard({ listing }: { listing: Listing }) {
         )}
       </div>
 
-      <div className="space-y-3 px-4 py-4 md:px-5">
+      <div className="space-y-3 px-4 py-4 sm:px-5">
         <div className="space-y-1.5">
           <p className="text-[11px] uppercase tracking-[0.18em] text-[var(--color-muted)]">{listing.city}</p>
           <h2 className="font-display text-[1.45rem] leading-tight text-[var(--color-text)] transition group-hover:translate-x-0.5">
@@ -47,9 +47,9 @@ export function ListingCard({ listing }: { listing: Listing }) {
           </h2>
         </div>
 
-        <div className="flex items-end justify-between gap-4 border-t border-black/5 pt-3">
+        <div className="flex flex-col gap-3 border-t border-black/5 pt-3 sm:flex-row sm:items-end sm:justify-between">
           <p className="text-base font-semibold text-[var(--color-text)]">{formatPrice(listing.price)}</p>
-          <div className="text-right text-[13px] text-[var(--color-muted)]">
+          <div className="text-[13px] text-[var(--color-muted)] sm:text-right">
             <p>{listing.areaSqm} m2</p>
             <p>{listing.bedrooms} chambres</p>
           </div>
