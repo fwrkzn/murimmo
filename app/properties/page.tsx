@@ -1,33 +1,14 @@
 import { createSupabaseAdminClient } from "@/lib/supabase-admin";
 import { mapListingRow } from "@/lib/listings";
 import { ListingCard } from "@/components/ListingCard";
-import type { ListingSort } from "@/types/listing";
 
-type PropertiesPageProps = {
-  searchParams?: Promise<{
-    sort?: string | string[];
-  }>;
-};
-
-function getSortValue(value: string | string[] | undefined): ListingSort {
-  const normalizedValue = Array.isArray(value) ? value[0] : value;
-
-  return normalizedValue === "price-asc" ? "price-asc" : "price-desc";
-}
-
-function getSortHref(sort: ListingSort) {
-  return sort === "price-asc" ? "/properties?sort=price-asc" : "/properties?sort=price-desc";
-}
-
-export default async function PropertiesPage({ searchParams }: PropertiesPageProps) {
-  const params = searchParams ? await searchParams : undefined;
-  const sort = getSortValue(params?.sort);
+export default async function PropertiesPage() {
   const supabase = createSupabaseAdminClient();
   const { data, error } = await supabase
     .from("listings")
     .select("*")
     .eq("published", true)
-    .order("price", { ascending: sort === "price-asc" });
+    .order("created_at", { ascending: false });
 
   if (error) {
     throw new Error("Impossible de charger les annonces publiées.");
@@ -73,32 +54,6 @@ export default async function PropertiesPage({ searchParams }: PropertiesPagePro
         </div>
 
         <aside className="order-first animate-fade-up space-y-4 lg:order-none lg:sticky lg:top-20 lg:self-start">
-          <div className="rounded-[22px] border border-black/5 bg-[var(--color-panel)] p-4 shadow-[0_10px_30px_rgba(26,26,26,0.035)]">
-            <p className="text-[11px] uppercase tracking-[0.2em] text-[var(--color-muted)]">Tri</p>
-            <div className="mt-3 space-y-2">
-              <a
-                href={getSortHref("price-desc")}
-                className={`block rounded-xl px-3 py-2.5 text-sm transition ${
-                  sort === "price-desc"
-                    ? "bg-[var(--color-text)] text-white"
-                    : "bg-white text-[var(--color-text)] hover:bg-[var(--color-surface)]"
-                }`}
-              >
-                Prix décroissant
-              </a>
-              <a
-                href={getSortHref("price-asc")}
-                className={`block rounded-xl px-3 py-2.5 text-sm transition ${
-                  sort === "price-asc"
-                    ? "bg-[var(--color-text)] text-white"
-                    : "bg-white text-[var(--color-text)] hover:bg-[var(--color-surface)]"
-                }`}
-              >
-                Prix croissant
-              </a>
-            </div>
-          </div>
-
           <div className="rounded-[22px] border border-black/5 bg-white p-4 shadow-[0_10px_30px_rgba(26,26,26,0.03)]">
             <p className="text-[11px] uppercase tracking-[0.2em] text-[var(--color-muted)]">En ce moment</p>
             <div className="mt-3 space-y-2 text-sm text-[var(--color-muted)]">
