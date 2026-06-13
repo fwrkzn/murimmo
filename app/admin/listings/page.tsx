@@ -3,6 +3,8 @@ import Link from "next/link";
 import { deleteListing } from "@/app/admin/listings/actions";
 import { createSupabaseAdminClient } from "@/lib/supabase-admin";
 
+export const dynamic = "force-dynamic";
+
 function formatPrice(value: number) {
   return new Intl.NumberFormat("fr-FR", {
     style: "currency",

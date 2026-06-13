@@ -1,5 +1,7 @@
 import { createSupabaseAdminClient } from "@/lib/supabase-admin";
 
+export const dynamic = "force-dynamic";
+
 function formatCount(value: number | null) {
   return new Intl.NumberFormat("fr-FR").format(value ?? 0);
 }

@@ -2,6 +2,8 @@ import { AccessCodeGenerator } from "@/components/access-code-generator";
 import { AccessLinkCopyButton } from "@/components/access-link-copy-button";
 import { createSupabaseAdminClient } from "@/lib/supabase-admin";
 
+export const dynamic = "force-dynamic";
+
 function formatDate(value: string) {
   return new Intl.DateTimeFormat("fr-FR", {
     dateStyle: "medium",

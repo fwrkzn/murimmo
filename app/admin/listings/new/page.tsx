@@ -1,6 +1,8 @@
 import { createListing } from "@/app/admin/listings/actions";
 import { ListingForm } from "@/components/listing-form";
 
+export const dynamic = "force-dynamic";
+
 export default function AdminNewListingPage() {
   return (
     <section className="space-y-6">

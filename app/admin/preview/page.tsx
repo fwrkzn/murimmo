@@ -3,6 +3,8 @@ import { PhotoGallery } from "@/components/PhotoGallery";
 import { mapListingRow } from "@/lib/listings";
 import { createSupabaseAdminClient } from "@/lib/supabase-admin";
 
+export const dynamic = "force-dynamic";
+
 function formatPrice(value: number) {
   return new Intl.NumberFormat("fr-FR", {
     style: "currency",

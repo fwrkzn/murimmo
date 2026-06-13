@@ -4,6 +4,8 @@ import { ListingForm } from "@/components/listing-form";
 import { createSupabaseAdminClient } from "@/lib/supabase-admin";
 import type { Listing } from "@/types/listing";
 
+export const dynamic = "force-dynamic";
+
 type EditListingPageProps = {
   params: Promise<{
     id: string;
